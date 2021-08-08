@@ -17,7 +17,8 @@ def profile():
 @site.route('/createposts', methods=['GET','POST'])
 @login_required
 def createposts():
-    form = BlogPostForm
+    form = BlogPostForm()
+    print('hi, there')
     if request.method == 'POST' and form.validate():
         title = form.title.data
         content = form.content.data
@@ -25,6 +26,8 @@ def createposts():
         print('\n', title, content)
         post = Post(title, content, user_id)
         db.session.add(post)
+        print('\n', title, content)
         db.session.commit()
+        print('THE COMMIT WORKED!')
         return redirect(url_for('site.createposts'))
     return render_template("createposts.html", form=form)

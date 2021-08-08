@@ -49,7 +49,7 @@ class Post(db.Model):
         self.user_id = user_id
 
     def set_id(self):
-        return str(uuid.uuid4())
+        return (secrets.token_urlsafe())
 
     def __repr__(self):
         return f'The title of the post is {self.title} \n and the content is {self.content}.'
