@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, flash, redirect, url_for, request
 from may_blog.forms import UserLoginForm, UserInfoForm
-from may_blog.models import User, check_password_hash
+from may_blog.models import User, check_password_hash, db
 
 from flask_login import login_user, logout_user, current_user, login_required
 
@@ -31,7 +31,7 @@ def signup():
 def signin():
     form = UserLoginForm()
     if request.method =='POST' and form.validate_on_submit():
-        email = form.email
+        email = form.email.data
         password = form.password.data
         print(email, password)
         

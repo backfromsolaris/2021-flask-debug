@@ -3,5 +3,4 @@ flask-debug
 migrations
 __pycache__
 flask-debug_env
-
 .gitignore
